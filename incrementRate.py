@@ -20,19 +20,18 @@ table = dynamodb.Table('Movies')
 title = "The Big New Movie"
 year = 2015
 
-response = table.update_item( # We use update item to update
+response = table.update_item(
     Key={
         'year': year,
         'title': title
     },
-    UpdateExpression="set info.rating = :r, info.plot=:p, info.actors=:a",
+    UpdateExpression="set info.rating = info.rating + :val", # incrementing the value by one
     ExpressionAttributeValues={
-        ':r': decimal.Decimal('5.9'), # the 5.9 is enclosed in '' because its a float. When we write 5.5, we do not use quotes.
-        ':p': "Everything happens all at once.",
-        ':a': ["Larry", "Moe", "Curly"]
+        ':val': decimal.Decimal(1)
     },
     ReturnValues="UPDATED_NEW"
 )
 
 print("UpdateItem succeeded:")
 print(json.dumps(response, indent=4, cls=DecimalEncoder))
+
