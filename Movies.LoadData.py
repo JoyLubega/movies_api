@@ -15,7 +15,8 @@ with open("moviedata.json") as json_file:
         info = movie['info']
 
         print("Adding movie:", year, title)
-
+        
+#  Adding data into the table
         table.put_item(
            Item={
                'year': year,
