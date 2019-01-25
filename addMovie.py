@@ -20,7 +20,7 @@ table = dynamodb.Table('Movies')
 title = "The Big New Movie"
 year = 2015
 
-response = table.put_item(
+response = table.put_item( #use put_item to add data
    Item={
         'year': year,
         'title': title,
