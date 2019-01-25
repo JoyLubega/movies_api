@@ -27,7 +27,7 @@ response = table.update_item(
     },
     UpdateExpression="set info.rating = :r, info.plot=:p, info.actors=:a",
     ExpressionAttributeValues={
-        ':r': decimal.Decimal(5.5),
+        ':r': decimal.Decimal('5.9'), # the 5.9 is enclosed in '' because its a float. When we write 5.5, we do not use quotes.
         ':p': "Everything happens all at once.",
         ':a': ["Larry", "Moe", "Curly"]
     },
